@@ -1,0 +1,417 @@
+* {
+  box-sizing: border-box;
+}
+header {
+  background: rgba(0, 0, 0, 0.2);
+  height: 9.7rem;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+header.one {
+  background: red;
+}
+header.two {
+  background: yellow;
+}
+header.three {
+  background: blue;
+}
+header .pos-phone {
+  flex-shrink: 0;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  height: 1.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.6rem;
+  display: flex;
+}
+header .pos-phone .pos-message {
+  flex-shrink: 0;
+  opacity: 0.3;
+  background: #000;
+  height: 1.5rem;
+  width: 3.3rem;
+  margin-bottom: auto;
+  padding-left: 0.75rem;
+  border-radius: 5rem;
+  color: white;
+  display: flex;
+}
+header .pos-phone .pos-message img {
+  width: 0.4rem;
+  height: 0.4rem;
+  display: inline-block;
+  margin-left: 0.3rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+header .pos-phone .pos-message span {
+  line-height: 1.5rem;
+  font-size: 0.6rem;
+}
+header .pos-phone .phone {
+  margin-left: auto;
+}
+header .pos-phone .phone img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+header .select {
+  align-self: flex-end;
+  width: 100%;
+  height: 1.1rem;
+  display: flex;
+}
+header .select ul {
+  padding: 0;
+  line-height: 0.5rem;
+  margin: auto;
+}
+header .select ul li {
+  height: 0.3rem;
+  width: 0.3rem;
+  border-radius: 10rem;
+  background: #fff;
+  display: inline-block;
+}
+header .select ul li.active {
+  background: #EE2A46;
+}
+main .search {
+  height: 2.9rem;
+  display: flex;
+  border-bottom: 0.25rem solid #F7F7F8;
+}
+main .search .input-box {
+  margin: auto;
+  width: 17.25rem;
+  height: 1.5rem;
+  background: #F7F7F8;
+  border: 0 solid #F7F7F8;
+  border-radius: 5rem;
+}
+main .search .input-box img {
+  display: inline-block;
+  margin-left: 0.95rem;
+  width: 0.55rem;
+  height: 0.55rem;
+}
+main .search .input-box input {
+  width: 15rem;
+  background: #F7F7F8;
+  font-size: 0.6rem;
+  border: 0 solid black;
+  -web-kit-appearance: none;
+  -moz-appearance: none;
+}
+main .search .input-box input::-webkit-input-placeholder {
+  font-size: 0.6rem;
+  color: #6A6A6A;
+}
+main .search .input-box input :focus {
+  border: 0 solid black;
+}
+main .zero-first-pay .head {
+  height: 2.45rem;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  border-bottom: 0.05px solid #ececec;
+}
+main .zero-first-pay .head p {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+}
+main .zero-first-pay .head p.title {
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 1rem;
+  line-height: 1rem;
+  padding-left: 0.5rem;
+  border-left: 0.2rem solid #EE2A46;
+  font-size: 0.75rem;
+  color: #666;
+}
+main .zero-first-pay .head .see-more {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  color: white;
+  margin-top: -0.15rem;
+  margin-right: 0.65rem;
+  height: 1.3rem;
+  width: 6.7rem;
+  text-align: center;
+  line-height: 1.3rem;
+  background-image: url(../img/红底@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+main .zero-first-pay .head .see-more .right-arrow {
+  display: inline-block;
+  margin-left: 0.25rem;
+  width: 0.25rem;
+  height: 0.45rem;
+}
+main .zero-first-pay .car-message {
+  padding-top: 0.7rem;
+  padding-bottom: 1.55rem;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  border-bottom: 0.25rem solid #F7F7F8;
+}
+@media (max-width: 1400px) {
+  main .zero-first-pay .car-message::-webkit-scrollbar {
+    display: none;
+  }
+}
+main .zero-first-pay .car-message .message {
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  height: 7.1rem;
+  width: 7.9rem;
+  font-size: 0.6rem;
+  background: #F7F7F8;
+  display: flex;
+  flex-direction: column;
+}
+main .zero-first-pay .car-message .message:nth-of-type(n+2) {
+  margin-left: 0.6rem;
+}
+main .zero-first-pay .car-message .message .car-phote {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.6rem;
+  height: 3.4rem;
+  width: 6.7rem;
+  background: black;
+}
+main .zero-first-pay .car-message .message .car-style {
+  margin-left: 0.5rem;
+  margin-bottom: 0.15rem;
+  margin-top: auto;
+}
+main .zero-first-pay .car-message .message .month-pay {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+main .zero-first-pay .car-message .message .month-pay .month-pay-title {
+  font-size: 0.5rem;
+  color: #999;
+}
+main .zero-first-pay .car-message .message .month-pay .price {
+  font-size: 0.7rem;
+  color: #EE2A46;
+}
+main .zero-first-pay .profit {
+  display: flex;
+  padding-top: 1.45rem;
+  padding-bottom: 1.2rem;
+  justify-content: space-around;
+}
+main .zero-first-pay .profit .profit-img {
+  width: 2.9rem;
+  height: 2.4rem;
+}
+main .zero-first-pay .consult {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.25rem solid #F7F7F8;
+}
+main .zero-first-pay .consult .consult-input {
+  background: #FFFFFF;
+  border: 0.02rem solid #D7D7D7;
+  border-radius: 3px;
+  width: 11.25rem;
+  height: 1.8rem;
+  font-size: 0.7rem;
+  margin-left: 0.8rem;
+  -web-kit-appearance: none;
+  -moz-appearance: none;
+}
+main .zero-first-pay .consult .consult-input::-webkit-input-placeholder {
+  font-size: 0.7rem;
+  color: #D7D7D7;
+  line-height: 1.6rem;
+}
+main .zero-first-pay .consult .consult-button {
+  height: 1.8rem;
+  font-size: 0.7rem;
+  width: 5.5rem;
+  color: white;
+  padding: 0;
+  border-width: 0;
+  background: #F12E49;
+}
+main .new-car .head {
+  height: 2.45rem;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  border-bottom: 0.05px solid #ececec;
+}
+main .new-car .head p {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+}
+main .new-car .head p.title {
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 1rem;
+  line-height: 1rem;
+  padding-left: 0.5rem;
+  border-left: 0.2rem solid #EE2A46;
+  font-size: 0.75rem;
+  color: #666;
+}
+main .new-car .head .see-more {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #666;
+  height: 1.3rem;
+  width: 6.7rem;
+  text-align: center;
+  line-height: 1.3rem;
+}
+main .new-car .head .see-more .right-arrow {
+  display: inline-block;
+  width: 0.25rem;
+  margin-left: 0.25rem;
+  height: 0.55rem;
+  transform: rotate(180deg);
+}
+main .new-car .new-car-message-list .new-car-message {
+  border-bottom: 0.05rem solid #ECECEC;
+  display: flex;
+  padding-left: 1rem;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-img {
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: blue;
+  height: 3.9rem;
+  width: 5.65rem;
+  background: url(../img/新车0首付@3x.png) right top, url(../img/test.png);
+  background-size: 1.65rem 1rem, cover;
+  background-repeat: no-repeat;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail {
+  flex-shrink: 0;
+  padding-left: 0.6rem;
+  font-size: 0.7rem;
+  padding-top: 1.055rem;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail .car-name {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail .car-style {
+  font-size: 0.6rem;
+  color: #333;
+  margin-top: 0.055rem;
+  margin-bottom: 0.29rem;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail .pay {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail .pay .pay-name {
+  flex-shrink: 0;
+  display: inline-block;
+  padding-right: 0.15rem;
+  font-size: 0.5rem;
+  color: #333;
+  line-height: 1rem;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail .pay .pay-name.left {
+  padding-left: 1rem;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail .pay .price {
+  flex-shrink: 0;
+  padding-right: 0.15rem;
+  display: inline-block;
+  font-size: 0.7rem;
+  color: #EE2A46;
+}
+main .new-car .new-car-message-list .new-car-message .new-car-detail .pay .pay-message {
+  font-size: 0.7rem;
+  color: #999;
+}
+main .new-car .foot {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+main .new-car .foot .see-all {
+  color: #999;
+  font-size: 0.6rem;
+  text-decoration: none;
+  line-height: 2rem;
+}
+footer {
+  height: 2.55rem;
+  width: 100%;
+  background: rgba(250, 250, 250, 0.9);
+  border: 0 solid #E5E5E5;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  color: #8E8E93;
+}
+footer .menu {
+  display: flex;
+  flex-direction: column;
+}
+footer .menu .new-car {
+  flex-shrink: 0;
+  height: 1.7rem;
+  width: 2.4rem;
+  background: url(../img/new-car.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer .menu .new-car.active {
+  background: url(../img/new-car-active.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer .menu .old-car {
+  height: 1.7rem;
+  width: 2.4rem;
+  background: url(../img/old-car.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer .menu .old-car.active {
+  background: url(../img/old-car-active.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer .menu .mine {
+  height: 1.7rem;
+  width: 2.4rem;
+  background: url(../img/mine.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer .menu .mine.active {
+  background: url(../img/mine-active.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer .menu p {
+  margin: 0 auto;
+}
+footer .menu p.active {
+  color: #EE2A46;
+}
