@@ -13,12 +13,12 @@ const touchEnd = function touchEndHandler (event) {
 	event.preventDefault();
 	let touchEnd = event.changedTouches[0];
 	if (touchEnd.clientX - touchFirst.clientX < -50) {
-		head.scrollLeft += head.scrollWidth / sumImg;
-		nowImg = nowImg + 1 <= 9 ? nowImg + 1 : sumImg;
+		head.scrollLeft = head.scrollLeft + (head.scrollWidth / sumImg) > (head.scrollWidth - (head.scrollWidth / sumImg)) ? 0 : head.scrollLeft + (head.scrollWidth / sumImg);
+		nowImg = nowImg + 1 <= 9 ? nowImg + 1 : 1;
 		imgMessage.textContent = `${nowImg}/${sumImg}`;
 	} else if (touchEnd.clientX - touchFirst.clientX > 50) {
-		head.scrollLeft -= head.scrollWidth / sumImg;
-		nowImg = nowImg - 1 >= 1 ? nowImg - 1 : 1;
+		head.scrollLeft = head.scrollLeft - (head.scrollWidth / sumImg) < 0 ? head.scrollWidth : head.scrollLeft - (head.scrollWidth / sumImg);
+		nowImg = nowImg - 1 >= 1 ? nowImg - 1 : 9;
 		imgMessage.textContent = `${nowImg}/${sumImg}`; 
 	} 
 }
