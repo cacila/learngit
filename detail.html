@@ -8,10 +8,12 @@
 		<link rel="stylesheet" href="asserts/css/reset.css"/>
 		<link rel="stylesheet/less" type="text/css" href="asserts/css/details.less">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-		<script type="text/javascript" src="asserts/js/resize.js"></script>
+		<script type="text/javascript" src="asserts/js/resize.js"></script>		
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	</head>
-	<body>
-		<main>
+	<body >
+		<main id="app">
 			<div class="img-message">1/9</div>
 			<section class="head">
 				<img src="asserts/img/车辆详情-返回-带底色@3x.png" class="back-arrow">
@@ -36,8 +38,8 @@
 				</div>
 			</section>
 			<section class="car-message">
-				<p class='car-introduce'><span class="car-new">新车</span><span class="car-name">吉利 傅越</span><span class="producer-pay">厂商指导价43.3万元</span></p>
-				<p class="car-style">2018款 1.8TD 自动两驱智联型4G互联版</p>
+				<p class='car-introduce'><span class="car-new">新车</span><span class="car-name">{{ carMessage.groupName }}</span><span class="producer-pay">厂商指导价43.3万元</span></p>
+				<p class="car-style">{{ carMessage.modelName }}</p>
 			</section>
 			<section class="pay">
 				
@@ -151,93 +153,42 @@
 					<tbody>
 						<tr>
 							<td>发动机</td>
-							<td>L型4缸</td>
+							<td>{{`${carEngine['气缸排列形式']} ${carEngine['气缸数(个)']}个`}}</td>
 						</tr>
 						<tr>
 							<td>变速箱</td>
-							<td>CVT无极变速</td>
+							<td>{{carSpeedBox['变速箱类型']}}</td>
 						</tr>
 						<tr>
 							<td>燃油标号</td>
-							<td>92#</td>
+							<td>{{`${carEngine['燃油标号'] ? carEngine['燃油标号'].slice(0,2):''}#`}}</td>
 						</tr>
 						<tr>
 							<td>环保标准</td>
-							<td>国5</td>
+							<td>{{carEngine['环保标准']}}</td>
 						</tr>
 						<tr>
 							<td>驱动方式</td>
-							<td>前置驱动</td>
+							<td>{{carTurn['驱动方式']}}</td>
 						</tr>
 						<tr>
 							<td>工信部综合油耗 (L/100km)</td>
-							<td>5.6</td>
+							<td>{{carBasicConf['工信部综合油耗(L/100km)']}}</td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="see-more">
-					<p>更多参数配置<span></span></p>
+					<p @click="see=true">更多参数配置<span></span></p>
 				</div>
+				
 			</section>
 			<section class="car-good">
 				<p class="car-good-title"><span class="border"></span>车辆亮点</p>
 				<div class="list-good">
-					<div class="detail-good">
-						<img />
-						<p>倒车影像</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>LED大灯</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>自动空调</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>真皮沙发</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>电动天窗</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>副驾驶自动调节</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>座椅加热</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>多功能方向盘</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>自动大灯</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>后驱车雷达</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>后视镜加热</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>胎压监测</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>日间行驶灯</p>
-					</div>
-					<div class="detail-good">
-						<img />
-						<p>后排出风口</p>
-					</div>		
+					<div class="detail-good" v-for="item in carHighLightList">
+						<img :src="item.url"/>
+						<p>{{item.name}}</p>
+					</div>					
 				</div>
 			</section>
 			<section class="buy-to-know">
@@ -364,13 +315,68 @@
 				</div>
 				<div class="ask-phone">
 					<img src="asserts/img/电话-无底@3x.png"/>
-					<span>在线咨询</span>
+					<span>电话咨询</span>
 				</div>
 				<div class="submit">
-					<span>在线咨询</span>
+					<span>去咨询</span>
 				</div>
 			</section>
-		</main>
+			<section class="car-config-detail" v-if="see">
+				<header>
+					<img src="asserts/img/关闭@2x.png" @click="see=false"/>
+					<h3>配置参数</h3>
+				</header>
+				<h3 class="car-detail-name">{{`${carMessage['brandName']} ${carMessage['seriesName']} ${carMessage['modelName']}`}}</h3>
+				<p>注：以下参数配置信息仅供参考，实际参数配置信息以销售车辆为准</p>
+				<dl>
+					<template v-for="(value, key) in carMessageParam">
+						<dt>{{key}}</dt>
+						<dd v-for="(valueword, keyword) in value">
+							<span>{{keyword}}</span>
+							<span>{{valueword}}</span>
+						</dd>
+					</template>					
+				</dl>				
+			</section>
+		</main>	
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					see: false,
+					carMessage: '',
+					carMessageParam: '',
+					carHighLightList: '',
+					carEngine: '',
+					carSpeedBox: '',
+					carBasicConf: '',
+					carTurn: '',
+				},
+				mounted() {
+					const that = this;
+					axios({
+						method:'get',
+						url:'http://rap2api.taobao.org/app/mock/126209/action/vehicle/detail/query',
+						responseType:'json'
+					}).then(function(response) {							
+							that.carMessage = response.data.data.vehicleConf;
+							that.carHighLightList = response.data.data.modelHighlightList;
+							that.carMessageParam = that.carMessage.parameters; 
+							that.carEngine = that.carMessageParam['发动机'];							
+							that.carSpeedBox = that.carMessageParam['变速箱'];
+							that.carBasicConf = that.carMessageParam['基本参数'];							
+							that.carTurn = that.carMessageParam['底盘转向'];							
+					});
+				},
+				watch:{
+					see() {
+						if (this.see) {
+							document.querySelector('html').scrollTop = 0;
+						}
+					}
+				}
+			})			
+		</script>
 		<script src="asserts/js/details.js"></script>
 	</body>
 </html>
